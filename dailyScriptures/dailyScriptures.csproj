@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>DailyScriptures</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.9.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\database\database.csproj" />
+    <ProjectReference Include="..\helper\helper.csproj" />
+  </ItemGroup>
+
+</Project>

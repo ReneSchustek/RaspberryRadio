@@ -1,0 +1,267 @@
+﻿@page "{response?}"
+@model RaspberryRadio.Pages.Config.ConfigurationModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "_LayoutConfig";
+    ViewData["Title"] = "Configuration";
+}
+
+<div class="row">
+    <!--Sidemenu-->
+    <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2">
+
+    </div>
+
+    <div class="col-10 col-lg-10 col-md-10 col-sm-10 col-xl-10">
+        <!--Tagestext-->
+        <table class="table table-dark table-hover" id="dailyScripturesList">
+            <thead>
+                <tr>
+                    <th style="width: 90%">@Html.DisplayNameFor(model => model.DailyScriptureLanguage.Language)</th>
+                    <th style="width: 5%"></th>
+                    <th style="width: 5%"><span class="fa fa-plus-circle span-clickable" onclick="addDailyScripture()"></span></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var dailyScriptureLanguage in Model.DailyScriptureLanguages)
+                {
+                    <tr>
+                        <td>@dailyScriptureLanguage.Language</td>
+                        <td><span class="fa fa-edit span-clickable" onclick="editDailyScripture(@dailyScriptureLanguage.Id)"></span></td>
+                        <td>
+                            @using (Html.BeginForm())
+                            {
+                                <input type="hidden" id="languageId" asp-for="DailyScriptureLanguage.Id" />
+                                <button type="submit" class="button-transparent" asp-page-handler="DeleteDailyScripture"><span class="fa fa-trash"></span></button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div id="tokenForm" class="background-dark div-form">
+            <h6>Token</h6>
+            <hr />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <input type="hidden" id="tokenFormId" asp-for="Token.Id" />
+                <div class="form-group row">
+                    <label class="col-4 col-lg-4 col-md-4 col-sm-4 col-xl-4" for="tokenFormDirbleToken">Dirble:</label>
+                    <div class="col-8 col-lg-8 col-md-8 col-sm-8 col-xl-8">
+                        <input class="form-control" id="tokenFormDirbleToken" asp-for="Token.DirbleToken" />
+                        <span asp-validation-for="Token.DirbleToken" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-lg-4 col-md-4 col-sm-4 col-xl-4" for="tokenFormOpenWeatherToken">OpenWeather:</label>
+                    <div class="col-8 col-lg-8 col-md-8 col-sm-8 col-xl-8">
+                        <input class="form-control" id="tokenFormOpenWeatherToken" asp-for="Token.OpenWeatherToken" />
+                        <span asp-validation-for="Token.OpenWeatherToken" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-right">
+                        <button type="submit" class="button-transparent" asp-page-handler="SaveToken"><span class="fa fa-save"></span></button>
+                    </div>
+
+                </div>
+            }
+        </div>
+
+        <div class="background-dark div-form">
+            <h6>Wettervorhersage</h6>
+            <div class="row">
+                <div class="col-10 col-lg-10 col-md-10 col-sm-10 col-xl-10 text-left">
+                    St&auml;dte
+                </div>
+                <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-center">
+                    <button class="button-transparent" onclick="askForCityRefresh()"><span class="fa fa-sync"></span></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
+                    <table class="table table-dark table-hover" id="openWeatherCityList">
+                        <thead>
+                            <tr>
+                                <th style="width: 80%">@Html.DisplayNameFor(model => model.OpenWeatherCity.Name)</th>
+                                <th style="width: 10%">@Html.DisplayNameFor(model => model.OpenWeatherCity.Country)</th>
+                                <th style="width: 5%"></th>
+                                <th style="width: 5%"><span class="fa fa-plus-circle span-clickable" onclick="addOpenWeather()"></span></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @foreach (var openWeatherCity in Model.SavedOpenWeatherCities)
+                            {
+                                <tr>
+                                    <td>@openWeatherCity.Name </td>
+                                    <td>@openWeatherCity.Country</td>
+                                    <td><span class="fa fa-edit span-clickable" onclick="editOpenWeatherCity(@openWeatherCity.Id)"></span>
+                                    <td>
+                                        @using (Html.BeginForm())
+                                        {
+                                            <input type="hidden" id="cityId" asp-for="@openWeatherCity.CityId" />
+                                            <button type="submit" class="button-transparent" asp-page-handler="DeleteOpenWeatherCity"><span class="fa fa-trash"></span></button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="background-dark div-form">
+            <h6>Kalender</h6>
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
+                    <table class="table table-dark table-hover" id="openWeatherCityList">
+                        <thead>
+                            <tr>
+                                <th style="width: 80%">@Html.DisplayNameFor(model => model.Calendar.Name)</th>
+                                <th style="width: 15%"></th>
+                                <th style="width: 5%"><span class="fa fa-plus-circle span-clickable" onclick="addCalender()"></span></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @foreach (var calender in Model.Calendars)
+                            {
+                                <tr>
+                                    <td>@calender.Name </td>
+                                    <td><span class="fa fa-edit span-clickable" onclick="editCalender(@calender.Id)"></span>
+                                    <td>
+                                        @using (Html.BeginForm())
+                                        {
+                                            <input type="hidden" id="calenderId" asp-for="@calender.Id" />
+                                            <button type="submit" class="button-transparent" asp-page-handler="DeleteCalender"><span class="fa fa-trash"></span></button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("~/Pages/Config/Partials/_LanguageForm.cshtml", null);}
+
+<div id="configModalAnswer" class="modal hide fade" tabindex="-1" role="dialog" aria-label="configModalAnswerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="configModalAnswerLabel">OpenWeather-Städte einlesen</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Schließen">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-content config-modal-body" id="configModalAnswerBody"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Schlie&szlig;en</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="configModalCitiesRefresh" class="modal hide fade" tabindex="-1" role="dialog" aria-label="configModalCitiesRefreshLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="configModalCitiesRefreshLabel">OpenWeather-Städte einlesen</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Schließen">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                        <span>Möchten Sie wirklich die Städte neu einlesen?<br /><br />Dieser Vorgang dauert sehr lange!</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center"></div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <button type="submit" class="button-transparent" asp-page-handler="RefreshCities" style="margin: 15px 0px 0px 0px;" title="Starten"><span class="fa fa-check-circle" style="color: darkgreen; font-size: 50px"></span></button>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Schlie&szlig;en</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="configModalProgress" class="modal hide fade" data-backdrop="static" tabindex="-1" role="dialog" aria-label="configModalProgressLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="configModalProgressLabel">Daten verarbeiten</h6>
+            </div>
+            <div class="modal-body">
+                <div id="showProgressBar">
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                            <div class="progress">
+                                <div id="configModalProgressBar"
+                                     class="progress-bar progress-bar-striped progress-bar-animated bg-info progressBar"
+                                     role="progressbar"
+                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 0%"></div>
+                                <div id="current-progress" class="currentProgress text-center"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                            <div id="configModalOutput" class="progressOutput"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="showLoading">
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                            <img src="~/images/loader.gif" style="height:75px; width:75px;" alt="Daten werden geladen..." />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                            <span id="loadingMessage"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" id="configModalProgressButton" asp-page-handler="AbortRefreshCities" class="btn btn-secondary">Abbrechen</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("~/Pages/Config/Partials/_OpenWeatherCityForm.cshtml", null);}
+
+@{await Html.RenderPartialAsync("~/Pages/Config/Partials/_CalenderForm.cshtml", null); }

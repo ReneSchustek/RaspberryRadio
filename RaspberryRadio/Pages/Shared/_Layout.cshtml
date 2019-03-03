@@ -3,74 +3,121 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RaspberryRadio</title>
+    <title>@ViewData["Title"] - Radio</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/jquery-ui/1.12.1/css/jquery-ui.min.css" />
+        <link rel="stylesheet" href="~/lib/slick/slick-theme.css" />
+        <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              crossorigin="anonymous"
-              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
+        <link rel="stylesheet" href="~/lib/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/jquery-ui/1.12.1/css/jquery-ui.min.css" />
+        <link rel="stylesheet" href="~/lib/slick/slick-theme.css" />
+        <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
     </environment>
+
+    <link rel="stylesheet" href="~/css/site/jquery.simpleTicker.css" />
+    <link rel="stylesheet" href="~/css/site/marquee.css" />
+    <link rel="stylesheet" href="~/css/site/dailyScripture.css" />
+    <link rel="stylesheet" href="~/css/site/openWeather.css" />
+    <link rel="stylesheet" href="~/css/site/calendar.css" />
+    <link rel="stylesheet" href="~/css/site/index.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">RaspberryRadio</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+<body class="background-dark">
+    <div class="container">
+        <!--Navigation-->
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row">
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                        <button id="startFull" class="button-transparent" onclick="enterFull">
+                            <span class="fa fa-expand" style="color: white;"></span>
+                        </button>
+                        <button id="exitFull" class="button-transparent" onclick="exitFull">
+                            <span class="fa fa-compress" style="color: white;"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+
+        <hr class="nav-line" />
+
+        <!--Content-->
+        @RenderBody()
+
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - RaspberryRadio - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="messageTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="messageTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="messageBody"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Schlie&szlig;en</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+
+
 
     <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/lib/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+        <script src="~/lib/jquery-ui/1.12.1/js/jquery-ui.min.js"></script>
+        <script src="~/lib/popper/popper.min.js"></script>
+        <script src="~/lib/popper/tooltip.min.js"></script>
+        <script src="~/lib/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery.loading.block.js"></script>
+        <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+
+        <!--[if lt IE 9]>
+            <script type="text/javascript" src="~/js/excanvas.js"></script>
+        <![endif]-->
     </environment>
+
     <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
-        </script>
+        <script src="~/lib/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+        <script src="~/lib/jquery-ui/1.12.1/js/jquery-ui.min.js"></script>
+        <script src="~/lib/popper/popper.min.js"></script>
+        <script src="~/lib/popper/tooltip.min.js"></script>
+        <script src="~/lib/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery.loading.block.js"></script>
+        <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+        <!--[if lt IE 9]>
+            <script type="text/javascript" src="~/js/excanvas.js"></script>
+        <![endif]-->
     </environment>
+
+    <script src="~/js/site/jquery.simpleTicker.js" asp-append-version="true"></script>
+    <script src="~/js/site/marquee.js" asp-append-version="true"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site/dailyScripture.js" asp-append-version="true"></script>
+    <script src="~/js/site/weather.js" asp-append-version="true"></script>
+    <script src="~/js/site/index.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

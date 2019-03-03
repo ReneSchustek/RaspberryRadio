@@ -1,0 +1,70 @@
+﻿/*Uhr und Datum*/
+.clock {
+    color: lightgray;
+    align-content: center;
+    vertical-align: text-top;
+}
+
+.clock-great {
+    font-size: 50pt;
+    vertical-align: text-top;
+}
+
+.clock-small {
+    font-size: 20pt;
+    vertical-align: -29px;
+    margin-left: 5px;
+}
+
+.date {
+    color: lightgray;
+    font-size: 10pt;
+    vertical-align: text-top
+}
+
+.date-small {
+    color: lightgray;
+    font-size: 8pt;
+    vertical-align: text-top
+}
+
+/*Carousel*/
+.carousel-control {
+    visibility: hidden;
+}
+
+.carousel-inner .carousel-item {
+    transition: -webkit-transform 2s ease;
+    transition: transform 2s ease;
+    transition: transform 2s ease, -webkit-transform 2s ease;
+}
+
+ol.carousel-indicators {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+}
+
+    ol.carousel-indicators li,
+    ol.carousel-indicators li.active {
+        float: left;
+        width: 15%;
+        height: 1px;
+        margin: 5;
+        border-radius: 0;
+        border: 0;
+        background: #DFE4E8;
+    }
+
+        ol.carousel-indicators li.active {
+            background: #658091;
+        }
+
+/* Kalenderticker*/
+.marquee {    
+    overflow: hidden;
+}
+

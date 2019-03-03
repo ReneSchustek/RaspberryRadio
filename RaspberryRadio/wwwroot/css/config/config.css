@@ -1,0 +1,32 @@
+﻿/* Form */
+.div-form {
+    padding: 15px 15px 0.5px 15px;
+}
+
+.progress {
+    position: relative;
+}
+
+.progressBar {
+    height: 25px;
+    margin-right: 0 5px 0 0;
+    padding: 0;
+}
+
+.progressOutput {
+    height: 120px;
+    font-size: x-small;
+    font-family: monospace;
+}
+
+.currentProgress {
+    position: absolute;
+    text-align: center;
+    line-height: 25px; /* line-height should be equal to bar height */
+    overflow: hidden;
+    color: black;
+    right: 0;
+    left: 0;
+    top: -5px;
+    font-size: xx-small;
+}

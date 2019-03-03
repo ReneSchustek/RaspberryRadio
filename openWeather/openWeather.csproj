@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>OpenWeather</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.6.22" />
+    <PackageReference Include="Hangfire.SQLite.Core" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\database\database.csproj" />
+  </ItemGroup>
+
+</Project>

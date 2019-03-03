@@ -1,0 +1,40 @@
+﻿@model RaspberryRadio.Pages.Config.ConfigurationModel
+
+<div id="configModalDailyScriptureForm" class="modal hide fade" tabindex="-1" role="dialog" aria-label="configModalDailyScriptureLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configModalDailyScriptureLabel">Tagestextsprache</h5>
+                    <span class="fa fa-times span-clickable" data-dismiss="modal" aria-label="Schließen"></span>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="dailyScriptureFormId" asp-for="DailyScriptureLanguage.Id" />
+                    <div class="form-group row">
+                        <div class="col-12 cols-lg-12 col-md-12 col-sm-12 col-xl-12">
+                            <label for="dailyScriptureFormLanguage">@Html.DisplayNameFor(model => model.DailyScriptureLanguage.Language):</label>
+                            <input class="form-control" id="dailyScriptureFormLanguage" asp-for="DailyScriptureLanguage.Language" />
+                            <span asp-validation-for="DailyScriptureLanguage.Language" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12 cols-lg-12 col-md-12 col-sm-12 col-xl-12">
+                            <label for="dailyScriptureFormUrl">@Html.DisplayNameFor(model => model.DailyScriptureLanguage.Url):</label>
+                            <input class="form-control" id="dailyScriptureFormUrl" asp-for="DailyScriptureLanguage.Url" />
+                            <span asp-validation-for="DailyScriptureLanguage.Url" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="button-transparent" asp-page-handler="SaveDailyScripture"><span class="fa fa-save" style="color: black"></span></button>
+                    <span class="fa fa-ban span-clickable" data-dismiss="modal" aria-label="Abbrechen"></span>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

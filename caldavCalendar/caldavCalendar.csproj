@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>CaldavCalendar</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ical.Net" Version="4.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\database\database.csproj" />
+    <ProjectReference Include="..\helper\helper.csproj" />
+  </ItemGroup>
+
+</Project>

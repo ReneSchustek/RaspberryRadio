@@ -1,0 +1,35 @@
+﻿@model RaspberryRadio.Pages.Config.ConfigurationModel
+
+<div id="configOpenWeatherCityForm" class="modal hide fade" tabindex="-1" role="dialog" aria-label="configOpenWeatherCityLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configOpenWeatherCityLabel">Wettervorhersage</h5>
+                    <span class="fa fa-times span-clickable" data-dismiss="modal" aria-label="Schließen"></span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
+                            <input id="openWeatherCountry" class="form-control" type="text" list="selectCountries" oninput="refreshCitySelection()" asp-for="OpenWeatherCountry" placeholder="Land" />
+                        </div>
+                        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
+                            <input id="openWeatherCity" class="form-control" type="text" list="selectCities" oninput="refreshCityMap()" asp-for="OpenWeatherCity" placeholder="Stadtname" />
+                        </div>
+                    </div>
+                    <div id="mapcontainer" style="width: 100%; height: 100px; margin-top: 5px"></div>
+                </div>
+                <div class="modal-footer">
+                    <input id="openWeatherCityId" type="hidden" asp-for="OpenWeatherCityId" />
+                    <button type="submit" class="button-transparent" asp-page-handler="SaveOpenWeatherCity"><span class="fa fa-save" style="color: black;"></span></button>
+                    <span class="fa fa-ban span-clickable" data-dismiss="modal" aria-label="Abbrechen"></span>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

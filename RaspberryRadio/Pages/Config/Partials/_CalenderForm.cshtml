@@ -1,0 +1,54 @@
+﻿@model RaspberryRadio.Pages.Config.ConfigurationModel
+
+<div id="configModalCalenderForm" class="modal hide fade" tabindex="-1" role="dialog" aria-label="configModalCalenderLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configModalCalenderLabel">Kalender</h5>
+                    <span class="fa fa-times span-clickable" data-dismiss="modal" aria-label="Schließen"></span>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="calenderFormId" asp-for="Calendar.Id" />
+                    <div class="form-group row">
+                        <div class="col-12 cols-lg-12 col-md-12 col-sm-12 col-xl-12">
+                            <label for="calenderFormName">@Html.DisplayNameFor(model => model.Calendar.Name):</label>
+                            <input class="form-control" id="calenderFormName" asp-for="Calendar.Name" />
+                            <span asp-validation-for="Calendar.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12 cols-lg-12 col-md-12 col-sm-12 col-xl-12">
+                            <label for="calenderFormUsername">@Html.DisplayNameFor(model => model.Calendar.Username):</label>
+                            <input class="form-control" id="calenderFormUsername" asp-for="Calendar.Username" />
+                            <span asp-validation-for="Calendar.Username" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12 cols-lg-12 col-md-12 col-sm-12 col-xl-12">
+                            <label for="calenderFormPassword">@Html.DisplayNameFor(model => model.Calendar.Password):</label>
+                            <input type="password" class="form-control" id="CclenderFormPassword" asp-for="Calendar.Password" />
+                            <span asp-validation-for="Calendar.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12 cols-lg-12 col-md-12 col-sm-12 col-xl-12">
+                            <label for="calenderFormUrl">WebCal-@Html.DisplayNameFor(model => model.Calendar.Url):</label>
+                            <input class="form-control" id="calenderFormUrl" asp-for="Calendar.Url" />
+                            <span asp-validation-for="Calendar.Url" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="button-transparent" asp-page-handler="SaveCalender"><span class="fa fa-save" style="color: black" ;></span></button>
+                    <span class="fa fa-ban span-clickable" data-dismiss="modal" aria-label="Abbrechen"></span>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿/*CSS für den Bereich Wetter*/
+
+.weather {
+    color: lightgray;
+    align-content: center;
+    vertical-align: text-top;
+}
+
+.weather-header {
+    color: lightgray;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.weather-small {
+    color: lightgray;
+    font-size: 8pt;
+    vertical-align: text-top;
+    margin-bottom: 5px;
+}
+
+.weather-temprature {
+    font-size: 18pt;
+    font-weight: bold;
+    padding: 0;
+}
+
+.weather-image {
+    height: 80px;
+    vertical-align: text-top;
+    margin-left: 15px;
+}
+
+.weather-forecast-container-start {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-top: 1px solid #808080;
+}
+
+.weather-forecast-container-end {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #808080;
+}
+
+.weather-forecast-container {
+    border-right: 1px solid #808080;
+}
+
+.weather-forecast {
+    padding: 0 5px 0 5px;
+}
+
+.weather-forecast-city {
+    padding: 0;
+}
+
+.weather-forecast-small {
+    padding: 0;   
+    font-size: xx-small;
+}
+
+
+.weather-forecast-image {
+    height: 30px;
+}
+
+.weather-forecast-temprature {
+    padding: 0;
+    font-size: xx-small;
+    padding-left: 2px;
+    padding-right: 2px;
+}

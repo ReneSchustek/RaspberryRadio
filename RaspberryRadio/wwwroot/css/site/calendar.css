@@ -1,0 +1,16 @@
+﻿.calendar-content {
+    font-size: x-small;
+    color: #808080;
+}
+
+.calender-content-start {
+    font-size: x-small;
+    font-weight: bold;
+    color: white;
+}
+
+.calendar-container-end {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #808080;
+}

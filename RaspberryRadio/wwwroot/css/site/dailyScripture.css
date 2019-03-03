@@ -1,0 +1,25 @@
+﻿/*CSS für den Bereich Tagestext*/
+
+/*Carousel*/
+.carousel-dailyScripture {
+    color: black;
+}
+
+/*Card*/
+.card-dailyScripture {
+    border: 0;
+}
+
+.card-header-dailyScripture {
+    background-color: #0a2e38;
+    color: white;
+}
+
+.card-body-dailyScripture {
+    background-color: white;
+}
+
+.card-text-dailyScripture {
+    min-height: 100pt;
+}
+
