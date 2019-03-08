@@ -35,13 +35,13 @@ namespace CaldavCalendar.Classes
 
                 foreach (CalendarModel savedCalendar in savedCalendars)
                 {
-                    Calendar calendar = await LoadFromUriAsync(new Uri(savedCalendar.Url));
+                    Ical.Net.Calendar calendar = await LoadFromUriAsync(new Uri(savedCalendar.Url));
                     calendars.Add(calendar);
                 }
 
                 SortedDictionary<long, string> eventDictionary = new SortedDictionary<long, string>();
 
-                foreach (Calendar calendar in calendars)
+                foreach (Ical.Net.Calendar calendar in calendars)
                 {
                     var occurrences = calendar.GetOccurrences(searchStart, searchEnd);
 
@@ -63,7 +63,7 @@ namespace CaldavCalendar.Classes
                 int counter = 1;
                 foreach (string value in eventDictionary.Values)
                 {
-                    if (counter == 1) { result += "<li><span class=\"calender-content-start\">Anstehende Termine: </span>" + value + "</li>"; }
+                    if (counter == 1) { result += "<li><span class=\"calendar-content-start\">Anstehende Termine: </span>" + value + "</li>"; }
                     else { result += "<li>" + value + "</li>"; }
 
                     counter++;

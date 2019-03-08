@@ -47,7 +47,9 @@ namespace RaspberryRadio
 
             services.AddMvc();
 
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlite(CreateConnectionString.Create()));
+            string dbPath = CreateConnectionString.Create();
+
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlite(dbPath));
 
             services.AddSignalR();
             services.AddAntiforgery();
@@ -77,7 +79,8 @@ namespace RaspberryRadio
         public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             //SignalR Routes
-            app.UseSignalR(routes => {
+            app.UseSignalR(routes =>
+            {
                 routes.MapHub<SendDailyScripture>("/dailyScriptureHub");
                 routes.MapHub<SendOpenWeatherConf>("/openWeatherConfHub");
                 routes.MapHub<SendOpenWeatherCurrent>("/currentWeatherHub");
@@ -94,7 +97,7 @@ namespace RaspberryRadio
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }
+            }          
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

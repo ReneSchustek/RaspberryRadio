@@ -127,12 +127,6 @@ $('.simple-marquee-container').SimpleMarquee({
 $(".marquee-1").trigger('mouseenter');
 $(".marquee-1").trigger('mouseleave');
 
-
-/**
- * Vollbild betreten
- * */
-$(enterFull());
-
 /**
  * Aktuelles Datum und KW erzeugen
  * */
@@ -202,50 +196,3 @@ function clock() {
 setInterval(function () {
     clock();
 }, 500);
-
-/**
- * Vollbild anzeigen und Elemente anpassen
- * */
-function enterFull() {
-    enterFullscreen(document.documentElement);
-    document.getElementById("startFull").style.visibility = "visible";
-    document.getElementById("exitFull").style.visibility = "hidden";
-}
-
-/**
- * Vollbild verlassen und Elemente anpassen
- * */
-function exitFull() {
-    exitFullscreen();
-    document.getElementById("startFull").style.visibility = "hidden";
-    document.getElementById("exitFull").style.visibility = "visible";
-}
-
-/**
- * Vollbild anzeigen
- * @param {any} element Element, das Vollbild sein soll
- */
-function enterFullscreen(element) {
-    if (element.requestFullscreen) {
-        element.requestFullscreen();
-    } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-    } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-    } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-    }
-}
-
-/**
- * Vollbild verlassen
- * */
-function exitFullscreen() {
-    if (document.exitFullscreen) {
-        document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-    }
-}

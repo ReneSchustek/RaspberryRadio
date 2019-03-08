@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RaspberryRadio.Pages.Config.Partials
+namespace RaspberryRadio.Pages.Partials
 {
     public class _LanguageFormModel : PageModel
     {

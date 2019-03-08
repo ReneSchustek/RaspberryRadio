@@ -6,7 +6,7 @@ namespace Database.Classes
     public class CreateConnectionString
     {
         /// <summary>
-        /// Erzeugt den ConnectionString
+        /// ConnectionString erzeugen
         /// </summary>
         /// <returns>ConnectionString</returns>
         public static string Create()

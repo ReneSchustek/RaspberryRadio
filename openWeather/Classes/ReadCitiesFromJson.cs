@@ -1,6 +1,5 @@
 ﻿using Database.Model;
 using Database.Services;
-using Hangfire;
 using Helper.Classes;
 using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
@@ -9,6 +8,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 
@@ -33,10 +33,8 @@ namespace OpenWeather.Classes
         /// </summary>
         /// <returns>Boolean</returns>
         /// <remarks>Nur beim ersten Laden und nur, wenn Tabelle leer ist</remarks>
-        public async Task ReadAsync(IJobCancellationToken cancellationToken)
+        public async Task ReadAsync()
         {
-
-            cancellationToken.ThrowIfCancellationRequested();
 
             string fileContent = string.Empty;
             string wsMessage = string.Empty;

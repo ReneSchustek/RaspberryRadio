@@ -18,13 +18,17 @@
         <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
     </environment>
 
+    <link rel="stylesheet" href="~/css/font.css" />
+
     <link rel="stylesheet" href="~/css/site/jquery.simpleTicker.css" />
     <link rel="stylesheet" href="~/css/site/marquee.css" />
     <link rel="stylesheet" href="~/css/site/dailyScripture.css" />
     <link rel="stylesheet" href="~/css/site/openWeather.css" />
     <link rel="stylesheet" href="~/css/site/calendar.css" />
+    <link rel="stylesheet" href="~/css/site/radio.css" />
     <link rel="stylesheet" href="~/css/site/index.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site/config.css" />
 
 </head>
 <body class="background-dark">
@@ -32,25 +36,40 @@
         <!--Navigation-->
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="row">
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-                    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                        <button id="startFull" class="button-transparent" onclick="enterFull">
-                            <span class="fa fa-expand" style="color: white;"></span>
-                        </button>
-                        <button id="exitFull" class="button-transparent" onclick="exitFull">
-                            <span class="fa fa-compress" style="color: white;"></span>
-                        </button>
+                <div class="menue">
+                    <div class="row">
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center align-baseline">
+                            <a href="#home" onclick="window.location.replace('/')">
+                                <span class="fa fa-home menue-top" id="homeNav"></span>
+                            </a>
+                            <hr id="homeLine" class="menueLine" />
+                        </div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center">
+                            <a href="#radio" onclick="window.location.reload()">
+                                <span class="fa fa-broadcast-tower menue-top" id="radioNav"></span>
+                            </a>
+                            <hr id="radioLine" class="menueLine" />
+                        </div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center">
+                            <a href="#music" onclick="window.location.reload()">
+                                <span class="fa fa-music menue-top" id="musicNav"></span>
+                            </a>
+                            <hr id="musicLine" class="menueLine" />
+                        </div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center">
+                            <a href="#conf" onclick="window.location.reload()">
+                                <span class="fa fa-cog menue-top" id="confNav"></span>
+                            </a>
+                            <hr id="confLine" class="menueLine" />
+                        </div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
                     </div>
                 </div>
             </div>
@@ -114,10 +133,13 @@
     <script src="~/js/site/jquery.simpleTicker.js" asp-append-version="true"></script>
     <script src="~/js/site/marquee.js" asp-append-version="true"></script>
 
+    <script src="~/js/map/leaflet.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/site/dailyScripture.js" asp-append-version="true"></script>
     <script src="~/js/site/weather.js" asp-append-version="true"></script>
+    <script src="~/js/site/radio.js" asp-append-version="true"></script>
     <script src="~/js/site/index.js" asp-append-version="true"></script>
+    <script src="~/js/site/config.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

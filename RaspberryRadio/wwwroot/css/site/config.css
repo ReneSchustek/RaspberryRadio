@@ -30,3 +30,13 @@
     top: -5px;
     font-size: xx-small;
 }
+
+.config-nav {
+    border-right: 1px solid #808080;
+}
+
+.nav-buttons {
+    font-size: larger;
+    color: white;
+    padding-left: 15px;
+}

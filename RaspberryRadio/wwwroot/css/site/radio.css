@@ -1,0 +1,21 @@
+﻿.station-fav {
+    border-radius: 5px;
+    border: 1px solid #808080;
+    margin: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.station-fav-active {
+    border-radius: 5px;
+    border: 1px solid #808080;
+    margin: 5px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    background-color: #808080;
+}
+
+.station-fav-content {
+   font-size: small;
+}

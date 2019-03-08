@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RaspberryRadio.Pages.Config.Partials
+namespace RaspberryRadio.Pages.Partials
 {
-    public class _CalenderFormModel : PageModel
+    public class _OpenWeatherCityFormModel : PageModel
     {
         public void OnGet()
         {

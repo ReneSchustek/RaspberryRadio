@@ -21,7 +21,7 @@ namespace Database.Services
         /// <summary>
         /// Asynchrones Speichern eines Datensatzes in der Tabelle Calendar
         /// </summary>
-        /// <param name="calendar">CalenderModel</param>
+        /// <param name="calendar">CalendarModel</param>
         /// <returns>Id des gespeicherten Datensatzess</returns>
         public async Task<Int32> CreateAsync(CalendarModel calendar)
         {
@@ -109,7 +109,7 @@ namespace Database.Services
         /// <summary>
         /// Asynchrones Update eines Datensatzes in der Tabelle Calendar
         /// </summary>
-        /// <param name="Calendar">CalenderModel</param>
+        /// <param name="Calendar">CalendarModel</param>
         /// <param name="id">Id des Eintrags</param>
         /// <returns>Id des geänderten Datensatzes</returns>
         public async Task<Int32> UpdateAsync(CalendarModel Calendar, int id)

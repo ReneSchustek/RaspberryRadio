@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Token.Classes
 {
-    [Route("/api/config/token")]
+    [Route("/api/token")]
     public class TokenConfigController : Controller
     {
         #region Models

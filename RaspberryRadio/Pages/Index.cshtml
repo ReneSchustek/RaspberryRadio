@@ -5,94 +5,484 @@
     ViewData["Title"] = "Raspberry Radio";
 }
 
-<script>
-</script>
-
-<div class="row">
-    <div class="col-7 col-sm-7 col-md-7 col-lg-7 mx-auto">
-        <div class="row">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6 mx-auto">
-                <div class="row">
-                    <div id="clock" class="text-center"></div>
+<div id="areaHome">
+    <div class="row">
+        <div class="col-7 col-sm-7 col-md-7 col-lg-7 mx-auto">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 mx-auto">
+                    <div class="row">
+                        <div id="clock" class="text-center"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6" style="border-left: 1px solid #808080;">
-                <div id="openWeatherCarousel" class="carousel slide carousel-openWeather" data-ride="carousel" data-interval="30000">
-                    @Html.Raw(Model.OpenWeatherCarouselContent)
-                </div>
-            </div>
-        </div>
-
-        <!--Vorhersage-->
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto weather-forecast-container-start"></div>
-        </div>
-        <div class="row">
-            <div id="forecastWeather" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ticker">
-                <ul id="forecastWeatherList">
-                    @Html.Raw(Model.OpenWeatherForecastContent)
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 weather-forecast-container-end"></div>
-        </div>
-
-        <!-- Kalendereinträge -->
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="simple-marquee-container">
-                    <div class="marquee">
-                        <ul class="marquee-content-items" id="calendarList">
-                            @Html.Raw(Model.CalendarEventContent)
-                        </ul>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6" style="border-left: 1px solid #808080;">
+                    <div id="openWeatherCarousel" class="carousel slide carousel-openWeather" data-ride="carousel" data-interval="30000">
+                        @Html.Raw(Model.OpenWeatherCarouselContent)
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto calendar-container-end"></div>
-        </div>
+            <!--Vorhersage-->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto weather-forecast-container-start"></div>
+            </div>
+            <div class="row">
+                <div id="forecastWeather" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ticker">
+                    <ul id="forecastWeatherList">
+                        @Html.Raw(Model.OpenWeatherForecastContent)
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 weather-forecast-container-end"></div>
+            </div>
 
-        <!-- Radiospeicher -->
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
-                <div class="row">
-                    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" style="border: 1px solid red; margin: 5px">
-                        <div class="text-center">1</div>
-                    </div>
-                    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" style="border: 1px solid red; margin: 5px">
-                        <div class="text-center">2</div>
-                    </div>
-                    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" style="border: 1px solid red; margin: 5px">
-                        <div class="text-center">3</div>
+            <!-- Kalendereinträge -->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="simple-marquee-container">
+                        <div class="marquee">
+                            <ul class="marquee-content-items" id="calendarList">
+                                @Html.Raw(Model.CalendarEventContent)
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" style="border: 1px solid red; margin: 5px">
-                        <div class="text-center">4</div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto calendar-container-end"></div>
+            </div>
+
+            <!-- Radiospeicher -->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+                    <div class="align-middle text-center">
+                        <div class="row">
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav-active">
+                                <div class="station-fav-content">Radio Eins</div>
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
+                                <div class="station-fav-content">2</div>
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
+                                <div class="station-fav-content">3</div>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+                                <button id="startFull" class="button-transparent station-fav-elements" onclick="play()">
+                                    <span class="fa fa-play" style="color: white;"></span>
+                                </button>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+                                <button id="startFull" class="button-transparent station-fav-elements" onclick="stop()">
+                                    <span class="fa fa-stop" style="color: white;"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
+                                <div class="station-fav-content">4</div>
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
+                                <div class="station-fav-content">5</div>
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
+                                <div class="station-fav-content">6</div>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+                                <button id="startFull" class="button-transparent station-fav-elements" onclick="volumeDown()">
+                                    <span class="fa fa-volume-down" style="color: white;"></span>
+                                </button>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+                                <button id="startFull" class="button-transparent station-fav-elements" onclick="volumeUp()">
+                                    <span class="fa fa-volume-up" style="color: white;"></span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" style="border: 1px solid red; margin: 5px">
-                        <div class="text-center">5</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-5 col-sm-5 col-md-5 col-lg-5">
+            <div id="dailyScriptureCarousel" class="carousel slide carousel-dailyScripture" data-ride="carousel" data-interval="30000">
+                @Html.Raw(Model.DailyScriptureCarouselContent)
+            </div>
+        </div>
+    </div>
+
+    @Html.Raw(Model.DailyScriptureModalContent)
+
+    @Html.Raw(Model.OpenWeatherModalContent)
+
+</div>
+
+<!-- Konfiguration -->
+<div id="areaConf" style="display: none;">
+    <div class="row">
+        <!--Sidemenu-->
+        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 config-nav">
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                    <a onclick="showConfArea('confAreaDailyScripture')">
+                        <span class="fa fa-book-open " id="homeNav"></span>
+                    </a>
+                    <hr id="dailyLine" class="menueLine" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">&nbsp;</div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                    <a onclick="showConfArea('confAreaToken')">
+                        <span class="fa fa-key" id="tokenNav"></span>
+                    </a>
+                    <hr id="tokenLine" class="menueLine" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">&nbsp;</div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                    <a onclick="showConfArea('confAreaWeather')">
+                        <span class="fa fa-cloud-sun-rain" id="weatherNav"></span>
+                    </a>
+                    <hr id="weatherLine" class="menueLine" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">&nbsp;</div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                    <a onclick="showConfArea('confAreaCalendar')">
+                        <span class="fa fa-calendar" id="calendarNav"></span>
+                    </a>
+                    <hr id="calendarLine" class="menueLine" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">&nbsp;</div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                    <a onclick="showConfArea('confAreaRadio')">
+                        <span class="fa fa-broadcast-tower" id="radioNav"></span>
+                    </a>
+                    <hr id="radioLine" class="menueLine" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">&nbsp;</div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                    <a href="#conf/#music" onclick="window.location.reload()">
+                        <span class="fa fa-music" id="musicNav"></span>
+                    </a>
+                    <hr id="musicLine" class="menueLine" />
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-10 col-lg-10 col-md-10 col-sm-10 col-xl-10">
+
+            <!--Tagestext-->
+            <div id="confAreaDailyScripture" style="display: none;">
+                <h6>Tagestext</h6>
+                <hr />
+                <table class="table table-dark table-hover" id="dailyScripturesList">
+                    <thead>
+                        <tr>
+                            <th style="width: 90%">@Html.DisplayNameFor(model => model.DailyScriptureLanguage.Language)</th>
+                            <th style="width: 5%"></th>
+                            <th style="width: 5%"><span class="fa fa-plus-circle span-clickable" onclick="addDailyScripture()"></span></th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var dailyScriptureLanguage in Model.DailyScriptureLanguages)
+                        {
+                            <tr>
+                                <td>@dailyScriptureLanguage.Language</td>
+                                <td><span class="fa fa-edit span-clickable" onclick="editDailyScripture(@dailyScriptureLanguage.Id)"></span></td>
+                                <td>
+                                    @using (Html.BeginForm())
+                                    {
+                                        <input type="hidden" id="@dailyScriptureLanguage.Id" asp-for="DailyScriptureLanguage.Id" />
+                                        <button type="submit" class="button-transparent" asp-page-handler="DeleteDailyScripture"><span class="fa fa-trash"></span></button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Token -->
+            <div id="confAreaToken" style="display: none;">
+                <div id="tokenForm" class="div-form">
+                    <h6>Token</h6>
+                    <hr />
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden" id="tokenFormId" asp-for="Token.Id" />
+                        <div class="form-group row">
+                            <label class="col-4 col-lg-4 col-md-4 col-sm-4 col-xl-4" for="tokenFormDirbleToken">Dirble:</label>
+                            <div class="col-8 col-lg-8 col-md-8 col-sm-8 col-xl-8">
+                                <input class="form-control" id="tokenFormDirbleToken" asp-for="Token.DirbleToken" />
+                                <span asp-validation-for="Token.DirbleToken" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-4 col-lg-4 col-md-4 col-sm-4 col-xl-4" for="tokenFormOpenWeatherToken">OpenWeather:</label>
+                            <div class="col-8 col-lg-8 col-md-8 col-sm-8 col-xl-8">
+                                <input class="form-control" id="tokenFormOpenWeatherToken" asp-for="Token.OpenWeatherToken" />
+                                <span asp-validation-for="Token.OpenWeatherToken" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-right">
+                                <button type="submit" class="button-transparent" asp-page-handler="SaveToken"><span class="fa fa-save"></span></button>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Wetter -->
+            <div id="confAreaWeather" style="display: none;">
+                <div class="div-form">
+                    <h6>Wettervorhersage</h6>
+                    <hr />
+                    <div class="row">
+                        <div class="col-10 col-lg-10 col-md-10 col-sm-10 col-xl-10 text-left">
+                            St&auml;dte
+                        </div>
+                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-center">
+                            <button class="button-transparent" onclick="askForCityRefresh()"><span class="fa fa-sync"></span></button>
+                        </div>
                     </div>
-                    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" style="border: 1px solid red; margin: 5px">
-                        <div class="text-center">6</div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
+                            <table class="table table-dark table-hover" id="openWeatherCityList">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80%">@Html.DisplayNameFor(model => model.OpenWeatherCity.Name)</th>
+                                        <th style="width: 10%">@Html.DisplayNameFor(model => model.OpenWeatherCity.Country)</th>
+                                        <th style="width: 5%"></th>
+                                        <th style="width: 5%"><span class="fa fa-plus-circle span-clickable" onclick="addOpenWeather()"></span></th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @foreach (var openWeatherCity in Model.SavedOpenWeatherCities)
+                                    {
+                                        <tr>
+                                            <td>@openWeatherCity.Name </td>
+                                            <td>@openWeatherCity.Country</td>
+                                            <td><span class="fa fa-edit span-clickable" onclick="editOpenWeatherCity(@openWeatherCity.Id)"></span>
+                                            <td>
+                                                @using (Html.BeginForm())
+                                                {
+                                                    <input type="hidden" id="cityId" asp-for="@openWeatherCity.CityId" />
+                                                    <button type="submit" class="button-transparent" asp-page-handler="DeleteOpenWeatherCity"><span class="fa fa-trash"></span></button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Kalender -->
+            <div id="confAreaCalendar" style="display: none;">
+                <div class="div-form">
+                    <h6>Kalender</h6>
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
+                            <table class="table table-dark table-hover" id="openWeatherCityList">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80%">@Html.DisplayNameFor(model => model.Calendar.Name)</th>
+                                        <th style="width: 15%"></th>
+                                        <th style="width: 5%"><span class="fa fa-plus-circle span-clickable" onclick="addCalendar()"></span></th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @foreach (var calendar in Model.Calendars)
+                                    {
+                                        <tr>
+                                            <td>@calendar.Name </td>
+                                            <td><span class="fa fa-edit span-clickable" onclick="editCalendar(@calendar.Id)"></span>
+                                            <td>
+                                                @using (Html.BeginForm())
+                                                {
+                                                    <input type="hidden" id="calendarId" asp-for="@calendar.Id" />
+                                                    <button type="submit" class="button-transparent" asp-page-handler="DeleteCalendar"><span class="fa fa-trash"></span></button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Radio -->
+            <div id="confAreaRadio" style="display: none;">
+                <div class="div-form">
+                    <h6>Radio Favoriten</h6>
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modals -->
+
+    @{await Html.RenderPartialAsync("~/Pages/Partials/_LanguageForm.cshtml", null);}
+
+    <div id="responseModalAnswer" class="modal hide fade" tabindex="-1" role="dialog" aria-label="responseModalAnswerLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="responseModalAnswerLabel"></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Schließen">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-content response-modal-body" id="responseModalAnswerBody"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schlie&szlig;en</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-        <div id="dailyScriptureCarousel" class="carousel slide carousel-dailyScripture" data-ride="carousel" data-interval="30000">
-            @Html.Raw(Model.DailyScriptureCarouselContent)
+    <div id="configModalCitiesRefresh" class="modal hide fade" tabindex="-1" role="dialog" aria-label="configModalCitiesRefreshLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="configModalCitiesRefreshLabel">OpenWeather-Städte einlesen</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Schließen">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                            <span>Möchten Sie wirklich die Städte neu einlesen?<br /><br />Dieser Vorgang dauert sehr lange!</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <button type="submit" class="button-transparent" asp-page-handler="RefreshCities" style="margin: 15px 0px 0px 0px;" title="Starten"><span class="fa fa-check-circle" style="color: darkgreen; font-size: 50px"></span></button>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schlie&szlig;en</button>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div id="configModalProgress" class="modal hide fade" data-backdrop="static" tabindex="-1" role="dialog" aria-label="configModalProgressLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="configModalProgressLabel">Daten verarbeiten</h6>
+                </div>
+                <div class="modal-body">
+                    <div id="showProgressBar">
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                                <div class="progress">
+                                    <div id="configModalProgressBar"
+                                            class="progress-bar progress-bar-striped progress-bar-animated bg-info progressBar"
+                                            role="progressbar"
+                                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                            style="width: 0%"></div>
+                                    <div id="current-progress" class="currentProgress text-center"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                                <div id="configModalOutput" class="progressOutput"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="showLoading">
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                                <img src="~/images/loader.gif" style="height:75px; width:75px;" alt="Daten werden geladen..." />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center">
+                                <span id="loadingMessage"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" id="configModalProgressButton" asp-page-handler="AbortRefreshCities" class="btn btn-secondary">Abbrechen</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @{await Html.RenderPartialAsync("~/Pages/Partials/_OpenWeatherCityForm.cshtml", null);}
+
+    @{await Html.RenderPartialAsync("~/Pages/Partials/_CalendarForm.cshtml", null); }
 </div>
 
 
-@Html.Raw(Model.DailyScriptureModalContent)
 
-@Html.Raw(Model.OpenWeatherModalContent)
 

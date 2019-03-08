@@ -1,5 +1,13 @@
 ﻿/* Site */
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+hr {
+    border-top: 1px solid #808080;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+}
 
 .background-dark {
     background: #0f3854;
@@ -8,9 +16,6 @@
     color: white;
 }
 
-.background-dark > hr {
-    border-top: 2px solid #808080;
-}
 /* Span */
 .span-clickable {
    cursor: pointer;
@@ -52,4 +57,32 @@
     cursor: pointer;
 }
 
+.button-transparent:focus {
+    outline: none;
+}
+
+    .button-transparent:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+        border-color: transparent;
+        border: 0;
+    }
+
+.menue-top {
+    color: white;
+}
+
+.menueLine {
+    display: none;
+    border-top: 1px solid #808080;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 80%;
+}
+
+.menue {
+    padding-top: 15px;
+}
 

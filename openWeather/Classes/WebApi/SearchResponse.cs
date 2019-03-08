@@ -11,7 +11,7 @@ namespace OpenWeather.Classes.WebApi
     /// <summary>
     /// Durchsucht OpenWeather nach Städten
     /// </summary>
-    [Route("/api/config/openWeather/search")]
+    [Route("/api/openWeather/search")]
     [ApiController]
     public class SearchResponse : Controller
     {

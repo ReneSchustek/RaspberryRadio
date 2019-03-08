@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Calender.Classes.WebApi
+namespace Calendar.Classes.WebApi
 {
     [Route("api/calendar")]
     [ApiController]
@@ -50,7 +50,8 @@ namespace Calender.Classes.WebApi
             try
             {
                 CalendarService calendarService = new CalendarService();
-                return await calendarService.ReadByIdAsync(id);
+                CalendarModel calendar =  await calendarService.ReadByIdAsync(id);
+                return calendar;
             }
             catch (Exception ex)
             {

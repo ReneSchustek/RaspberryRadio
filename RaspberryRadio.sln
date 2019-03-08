@@ -5,17 +5,19 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaspberryRadio", "RaspberryRadio\RaspberryRadio.csproj", "{7F092415-DBD9-446E-A7A1-73729F1470E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "database", "database\database.csproj", "{FD26BAEF-47DD-4AFF-B2C8-8BE5BCC60433}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "database", "database\database.csproj", "{FD26BAEF-47DD-4AFF-B2C8-8BE5BCC60433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "helper", "helper\helper.csproj", "{5A302A74-4018-42A4-AF9E-BDE2192ABC1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "helper", "helper\helper.csproj", "{5A302A74-4018-42A4-AF9E-BDE2192ABC1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "openWeather", "openWeather\openWeather.csproj", "{C5A7F78E-F369-498B-94B8-CA0F4D7F3517}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openWeather", "openWeather\openWeather.csproj", "{C5A7F78E-F369-498B-94B8-CA0F4D7F3517}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dailyScriptures", "dailyScriptures\dailyScriptures.csproj", "{B7483B0D-CB29-45FF-BBE6-8D86F4B004B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dailyScriptures", "dailyScriptures\dailyScriptures.csproj", "{B7483B0D-CB29-45FF-BBE6-8D86F4B004B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "caldavCalendar", "caldavCalendar\caldavCalendar.csproj", "{719B6BE1-0660-44E2-8732-FEA27264C7C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "caldavCalendar", "caldavCalendar\caldavCalendar.csproj", "{719B6BE1-0660-44E2-8732-FEA27264C7C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "token", "token\token.csproj", "{F63C9306-E710-492A-AC5B-76BBFFDA1F47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "token", "token\token.csproj", "{F63C9306-E710-492A-AC5B-76BBFFDA1F47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "radio", "radio\radio.csproj", "{C8ECD7ED-7281-44CE-83E9-1C6FFB6942F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{F63C9306-E710-492A-AC5B-76BBFFDA1F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F63C9306-E710-492A-AC5B-76BBFFDA1F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F63C9306-E710-492A-AC5B-76BBFFDA1F47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8ECD7ED-7281-44CE-83E9-1C6FFB6942F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8ECD7ED-7281-44CE-83E9-1C6FFB6942F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8ECD7ED-7281-44CE-83E9-1C6FFB6942F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8ECD7ED-7281-44CE-83E9-1C6FFB6942F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
