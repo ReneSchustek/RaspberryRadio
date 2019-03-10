@@ -8,7 +8,6 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 
@@ -46,7 +45,7 @@ namespace OpenWeather.Classes
             try
             {
                 string fullPath = Path.Combine(Folders.Get("files"), "city.list.json");
-                if (System.IO.File.Exists(fullPath))
+                if (File.Exists(fullPath))
                 {
                     //Info senden
                     wsMessage = "0,0,0%,Daten werden eingelesen.";
@@ -97,7 +96,6 @@ namespace OpenWeather.Classes
                             await _hubContext.Clients.All.SendAsync("OnOpenWeatherRefresh", wsMessage);
 
                             string message = city.Name + " - " + city.Country + " (Id: " + id.ToString() + ") wurde gespeichert.";
-                            WriteLog.Write(message, "info");
                         }
                     }
 
