@@ -28,6 +28,8 @@ namespace Database.Classes
         public DbSet<OpenWeatherSavedCitiesModel> OpenWeatherSavedCities { get; set; }
 
         public DbSet<CalendarModel> Calendars { get; set; }
+
+        public DbSet<RadioFavModel> RadioFavorites { get; set; }
         #endregion
 
         #region Builder

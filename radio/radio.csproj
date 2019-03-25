@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <ProjectReference Include="..\database\database.csproj" />
+    <ProjectReference Include="..\helper\helper.csproj" />
   </ItemGroup>
 
 </Project>

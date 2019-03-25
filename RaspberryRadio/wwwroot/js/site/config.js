@@ -38,7 +38,8 @@ else if (confUrl.includes('radio') && confUrl.includes('conf')) {
 }
 else if (confUrl.includes('music') && confUrl.includes('conf')) {
     showConfArea('confAreaMusic');
-}else if (confUrl.includes('conf')) {
+}
+else if (confUrl.includes('conf')) {
     showConfArea('confAreaDailyScripture');
 }
 
@@ -347,3 +348,4 @@ function editCalendar(id) {
 
     $('#configModalCalendarForm').modal('show');
 }
+

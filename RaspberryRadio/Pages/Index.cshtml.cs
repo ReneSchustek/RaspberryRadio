@@ -69,7 +69,54 @@ namespace RaspberryRadio.Pages
         public IList<CalendarModel> Calendars { get; set; }
 
         //Radio
-        
+        [BindProperty]
+        public RadioFavModel RadioFav { get; set; }
+        [BindProperty]
+        public IList<RadioFavModel> RadioFavs { get; set; }
+
+        [BindProperty]
+        public string RadioCountry { get; set; }
+
+        [BindProperty]
+        public RadioFavModel RadioTopFav1 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav2 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav3 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav4 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav5 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav6 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav7 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav8 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav9 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav10 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav11 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav12 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav13 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav14 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav15 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav16 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav17 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav18 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav19 { get; set; }
+        [BindProperty]
+        public RadioFavModel RadioTopFav20 { get; set; }
 
         //Global
         private readonly IHubContext<SendOpenWeatherConf> _hubContext;
@@ -82,6 +129,7 @@ namespace RaspberryRadio.Pages
         private readonly OpenWeatherCityService _openWeatherCityService;
         private readonly OpenWeatherSavedCitiesService _openWeatherSavedCitiesService;
         private readonly CalendarService _calendarService;
+        private readonly RadioService _radioService;
         #endregion
 
         #region Constructor
@@ -97,6 +145,7 @@ namespace RaspberryRadio.Pages
             _openWeatherCityService = new OpenWeatherCityService();
             _openWeatherSavedCitiesService = new OpenWeatherSavedCitiesService();
             _calendarService = new CalendarService();
+            _radioService = new RadioService();
         }
         #endregion
 
@@ -165,6 +214,9 @@ namespace RaspberryRadio.Pages
             GetCalendarEvents getCalendarEvents = new GetCalendarEvents();
             CalendarEventContent = await getCalendarEvents.GetEvents();
 
+            //RadioFavs auslesen
+            CreateTopRadioFavs();
+
             /* *****************************
              * Konfiguration
              * ***************************** */
@@ -184,6 +236,9 @@ namespace RaspberryRadio.Pages
 
             //Kalender auslesen
             Calendars = await _calendarService.ReadAllAsync();
+
+            //Radio auslesen
+            RadioFavs = await _radioService.ReadAllAsync();
         }
 
         /* *****************************
@@ -423,6 +478,60 @@ namespace RaspberryRadio.Pages
             {
                 WriteLog.Write("Configuration DeleteCelender: " + ex.ToString(), "error");
                 return RedirectToPage(new { response = "save", state = "err", message = "Kalender", area = "calendar" });
+            }
+        }
+
+        private async Task CreateTopRadioFavs()
+        {
+            IList<RadioFavModel> radioTopFavs = await _radioService.ReadFirst(6);
+
+            if (radioTopFavs.Count < 6)
+            {
+                RadioTopFav6.Name = "";
+            }
+            else
+            {
+
+            }
+
+            if (radioTopFavs.Count < 5)
+            {
+            }
+            else
+            {
+
+            }
+
+            if (radioTopFavs.Count < 4)
+            {
+            }
+            else
+            {
+
+            }
+
+            if (radioTopFavs.Count < 3)
+            {                
+            }
+            else
+            {
+
+            }
+
+            if (radioTopFavs.Count < 2)
+            {
+            }
+            else
+            {
+
+            }
+
+            if (radioTopFavs.Count < 1)
+            {                
+            }
+            else
+            {
+
             }
         }
     }

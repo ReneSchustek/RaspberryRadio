@@ -4,6 +4,8 @@
     margin: 5px;
     text-align: center;
     vertical-align: middle;
+    min-height: 15px;
+    font-size: small;
 }
 
 .station-fav-active {
@@ -14,8 +16,43 @@
     vertical-align: middle;
     color: white;
     background-color: #808080;
+    font-size: small;
 }
 
 .station-fav-content {
    font-size: small;
+}
+
+.favpos {
+    font-size: small;
+    height: 30px;
+}
+
+.radioFavorites {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 200px;
+}
+
+#radiofavlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.radiofavlist-element {
+    font-size: small;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.radiofav-icon {
+    font-size: small;
+}
+
+.radiofav-moveable {
+    color: #808080
 }

@@ -1,0 +1,68 @@
+﻿@model RaspberryRadio.Pages.IndexModel
+
+<div id="nextpage" style="visibility: hidden"></div>
+<div id="lastpage" style="visibility: hidden"></div>
+
+<div id="configModalRadioSearch" class="modal hide fade" tabindex="-1" role="dialog" aria-label="configModalRadioLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configModalRadioLabel">Sender suchen</h5>
+                    <span class="fa fa-times span-clickable" data-dismiss="modal" aria-label="Schließen"></span>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
+                            <div class="form-row">
+                                <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
+                                    <input id="radioCountry" class="form-control" type="text" list="selectCountries" oninput="refreshRadioList()" asp-for="RadioCountry" placeholder="Land" />
+                                </div>
+                                <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xl-4">
+                                    <input id="radioSearch" class="form-control" type="text" placeholder="Suche" />
+                                </div>
+                                <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2">
+                                    <span class="fa fa-search span-clickable" style="padding-top: 10px; font-size: large;" onclick="refreshRadioListBySearch(0)"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
+                            <hr />
+                            <table class="table table-sm table-dark table-hover" style="font-size: xx-small">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%" id="foundRadioImage">Bild</th>
+                                        <th style="width: 80%" id="foundRadioName">Name</th>
+                                        <th style="width: 5%"></th>
+                                    </tr>
+
+                                </thead>
+                                <tbody id="radioStationTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                            <span id="lastpagespan" class="fa fa-arrow-circle-left span-clickable" style="color:black" onclick="lastPage()"></span>
+                        </div>
+                        <div class="col col-lg col-md col-sm col-xl text-center">
+                            <span id="pageDisplay" style="font-size: small"></span>
+                        </div>
+                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                            <span id="nextpagespan" class="fa fa-arrow-circle-right span-clickable" style="color:black" onclick="nextPage()"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -41,12 +41,12 @@ namespace OpenWeather.Classes.WeatherData
 
             string apiResponse = string.Empty;
 
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
                     client.BaseAddress = new Uri(url);
-                    var response = await client.GetAsync(url);
+                    HttpResponseMessage response = await client.GetAsync(url);
 
                     apiResponse = await response.Content.ReadAsStringAsync();
                 }

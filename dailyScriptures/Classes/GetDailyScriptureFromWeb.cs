@@ -31,7 +31,7 @@ namespace DailyScriptures.Classes
                 urlPart = now.Year + "/" + now.Month + "/" + now.Day;
             }
 
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
@@ -41,7 +41,7 @@ namespace DailyScriptures.Classes
                     url = url + "/" + DateTime.Now.Year + "/" + (int)DateTime.Now.Month + "/" + (int)DateTime.Now.Day;
 
                     client.BaseAddress = new Uri(url);
-                    var response = await client.GetAsync(url);
+                    HttpResponseMessage response = await client.GetAsync(url);
 
                     string result = await response.Content.ReadAsStringAsync();
 

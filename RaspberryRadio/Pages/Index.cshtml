@@ -59,13 +59,13 @@
                     <div class="align-middle text-center">
                         <div class="row">
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav-active">
-                                <div class="station-fav-content">Radio Eins</div>
+                                <div id="radioFav1" class="station-fav-content">Model.RadioTopFav1.Name</div>
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
-                                <div class="station-fav-content">2</div>
+                                <div id="radioFav2" class="station-fav-content">Model.RadioTopFav2.Name</div>
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
-                                <div class="station-fav-content">3</div>
+                                <div id="radioFav3" class="station-fav-content">Model.RadioTopFav3.Name</div>
                             </div>
                             <div class="col-1 col-sm-1 col-md-1 col-lg-1">
                                 <button id="startFull" class="button-transparent station-fav-elements" onclick="play()">
@@ -80,13 +80,13 @@
                         </div>
                         <div class="row">
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
-                                <div class="station-fav-content">4</div>
+                                <div id="radioFav4" class="station-fav-content">Model.RadioTopFav4.Name</div>
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
-                                <div class="station-fav-content">5</div>
+                                <div id="radioFav5" class="station-fav-content">Model.RadioTopFav5.Name</div>
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 align-content-center station-fav">
-                                <div class="station-fav-content">6</div>
+                                <div id="radioFav6" class="station-fav-content">Model.RadioTopFav6.Name</div>
                             </div>
                             <div class="col-1 col-sm-1 col-md-1 col-lg-1">
                                 <button id="startFull" class="button-transparent station-fav-elements" onclick="volumeDown()">
@@ -115,6 +115,21 @@
 
     @Html.Raw(Model.OpenWeatherModalContent)
 
+</div>
+
+<!-- Radio -->
+<div id="areaRadio" style="display: none;">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xl-3 align-content-center station-fav">
+            <div id="radioFav1" class="station-fav-content"></div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xl-3 align-content-center station-fav">
+            <div id="radioFav2" class="station-fav-content"></div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xl-3 align-content-center station-fav">
+            <div id="radioFav3" class="station-fav-content"></div>
+        </div>
+    </div>
 </div>
 
 <!-- Konfiguration -->
@@ -320,6 +335,7 @@
             <div id="confAreaCalendar" style="display: none;">
                 <div class="div-form">
                     <h6>Kalender</h6>
+                    <hr />
                     <div class="row">
                         <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
                             <table class="table table-dark table-hover" id="openWeatherCityList">
@@ -357,9 +373,530 @@
             <div id="confAreaRadio" style="display: none;">
                 <div class="div-form">
                     <h6>Radio Favoriten</h6>
+                    <hr />
+
                     <div class="row">
-                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
-                            
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 radioFavorites">
+                            <div class="row">
+                                <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left ">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>Pos</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>1</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>2</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>3</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>4</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>5</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>6</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>7</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>8</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>9</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>10</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>11</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>12</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>13</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>14</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>15</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>16</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>17</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>18</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>19</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-center favpos">
+                                            <span>20</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-11 col-lg-11 col-md-11 col-sm-11 col-xl-11 text-left">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left favpos">
+                                            <span>Sender</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 text-left">
+                                            <ul id="radiofavlist">
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(1)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                           <div id="radiofavimg1"></div>
+                                                        </div>
+                                                        <div id="FavPos1" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 1
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(1)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(2)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg2"></div>
+                                                        </div>
+                                                        <div id="FavPos2" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 2
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(2)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(3)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg3"></div>
+                                                        </div>
+                                                        <div id="FavPos3" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 3
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(3)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(4)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg4"></div>
+                                                        </div>
+                                                        <div id="FavPos4" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 4
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(4)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(5)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg5"></div>
+                                                        </div>
+                                                        <div id="FavPos5" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 5
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(5)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(6)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg6"></div>
+                                                        </div>
+                                                        <div id="FavPos6" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 6
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(6)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(7)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg7"></div>
+                                                        </div>
+                                                        <div id="FavPos7" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 7
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(7)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(8)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg8"></div>
+                                                        </div>
+                                                        <div id="FavPos8" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 8
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(8)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(9)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg9"></div>
+                                                        </div>
+                                                        <div id="FavPos9" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 9
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(9)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle radiofav-add" onclick="addRadioFav(10)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg10"></div>
+                                                        </div>
+                                                        <div id="FavPos10" class="col-8 col-lg-8 col-md-8 col-sm-8 col-xl-8 text-left">
+                                                            Position 10
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars radiofav-add"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(11)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg11"></div>
+                                                        </div>
+                                                        <div id="FavPos11" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 11
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(11)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(12)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg12"></div>
+                                                        </div>
+                                                        <div id="FavPos12" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 12
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(12)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(13)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg13"></div>
+                                                        </div>
+                                                        <div id="FavPos13" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 13
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(13)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(14)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg14"></div>
+                                                        </div>
+                                                        <div id="FavPos14" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 14
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(14)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(15)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg15"></div>
+                                                        </div>
+                                                        <div id="FavPos15" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 15
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(15)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(16)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg16"></div>
+                                                        </div>
+                                                        <div id="FavPos16" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 16
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(16)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(17)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg17"></div>
+                                                        </div>
+                                                        <div id="FavPos17" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 17
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(17)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(18)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg18"></div>
+                                                        </div>
+                                                        <div id="FavPos18" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 18
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(18)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(19)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg19"></div>
+                                                        </div>
+                                                        <div id="FavPos19" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 19
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(19)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="radiofavlist-element">
+                                                    <div class="row">
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-plus-circle span-clickable radiofav-icon" onclick="addRadioFav(20)"></span>
+                                                        </div>
+                                                        <div class="col-2 col-lg-2 col-md-2 col-sm-2 col-xl-2 text-left">
+                                                            <div id="radiofavimg20"></div>
+                                                        </div>
+                                                        <div id="FavPos20" class="col-7 col-lg-7 col-md-7 col-sm-7 col-xl-7 text-left">
+                                                            Position 20
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-trash span-clickable radiofav-icon" onclick="deleteRadioFav(20)"></span>
+                                                        </div>
+                                                        <div class="col-1 col-lg-1 col-md-1 col-sm-1 col-xl-1 text-left">
+                                                            <span class="fa fa-bars span-clickable radiofav-icon radiofav-moveable"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>                            
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -480,7 +1017,9 @@
 
     @{await Html.RenderPartialAsync("~/Pages/Partials/_OpenWeatherCityForm.cshtml", null);}
 
-    @{await Html.RenderPartialAsync("~/Pages/Partials/_CalendarForm.cshtml", null); }
+    @{await Html.RenderPartialAsync("~/Pages/Partials/_CalendarForm.cshtml", null);}
+
+    @{await Html.RenderPartialAsync("~/Pages/Partials/_RadioSearch.cshtml", null);}
 </div>
 
 

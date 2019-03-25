@@ -1,4 +1,19 @@
 ﻿/* Site */
+
+/* ------------------------------
+*  Scrollbar
+   ------------------------------ */
+::-webkit-scrollbar {
+    width: 6px;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #808080;
+    border-radius: 4px;
+}
+/* ------------------------------ */
+
 hr {
     border-top: 1px solid #808080;
 }
@@ -27,7 +42,7 @@ a {
 }
 
 .modal-body {
-    height: 180px;
+    max-height: calc(100% - 120px);
     overflow-y: auto;
     font-size: 14px;
 }

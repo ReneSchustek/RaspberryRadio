@@ -7,12 +7,12 @@ var $mq;
  * */
 
 /* Tagestext WebSocket Verbindung */
-const dailyScriptuerConnection = new signalR.HubConnectionBuilder()
+const dailyScriptureConnection = new signalR.HubConnectionBuilder()
     .withUrl('/dailyScriptureHub')
     .configureLogging(signalR.LogLevel.Information)
     .build();
 
-dailyScriptuerConnection.start().catch(err => console.error(err.toString()));
+dailyScriptureConnection.start().catch(err => console.error(err.toString()));
 
 /* Aktuelles Wetter WebSocket Verbindung */
 const currentWeatherConnection = new signalR.HubConnectionBuilder()
@@ -41,7 +41,7 @@ calendarConnection.start().catch(err => console.error(err.toString()));
 /**
  * Tagestext empfangen
  * */
-dailyScriptuerConnection.on("OnDailyScripturePublish", (dailyScripture) => {
+dailyScriptureConnection.on("OnDailyScripturePublish", (dailyScripture) => {
 
     var dailyText = JSON.parse(dailyScripture);
 

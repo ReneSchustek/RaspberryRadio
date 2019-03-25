@@ -10,6 +10,7 @@ $(function () {
 
     //Navigation
     if (curUrl.includes('conf')) { mainMenueShow('areaConf'); }
+    else if (curUrl.includes('radio')) { mainMenueShow('areaRadio'); }
     else { mainMenueShow('areaHome'); }
 
     //Modal
@@ -165,6 +166,7 @@ function mainMenueShow(name) {
     name = name.toLowerCase();
 
     if (name.includes('conf')) { document.getElementById('confLine').style.display = 'block'; }
+    else if (name.includes('radio')) { document.getElementById('radioLine').style.display = 'block'; }
     else { document.getElementById('homeLine').style.display = 'block'; }
 }
 

@@ -21,6 +21,7 @@
     <ProjectReference Include="..\database\database.csproj" />
     <ProjectReference Include="..\helper\helper.csproj" />
     <ProjectReference Include="..\openWeather\openWeather.csproj" />
+    <ProjectReference Include="..\radio\radio.csproj" />
     <ProjectReference Include="..\token\token.csproj" />
   </ItemGroup>
 
