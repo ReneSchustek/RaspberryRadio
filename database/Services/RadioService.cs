@@ -42,6 +42,10 @@ namespace Database.Services
                     RadioFavModel curEntries = await context.RadioFavorites.Where(x => x.Url == radioFav.Url).AsNoTracking().FirstOrDefaultAsync();
                     if (curEntries != null) { return await UpdateAsync(radioFav, curEntries.Id); }
 
+                    curEntries = null;
+                    curEntries = await context.RadioFavorites.Where(x => x.Pos == radioFav.Pos).AsNoTracking().FirstOrDefaultAsync();
+                    if(curEntries != null) { return await UpdateAsync(radioFav, curEntries.Id); }
+
                     radioFav.CreatedDate = DateTime.Now;
                     radioFav.UpdatedDate = DateTime.Now;
                     await context.RadioFavorites.AddAsync(radioFav);

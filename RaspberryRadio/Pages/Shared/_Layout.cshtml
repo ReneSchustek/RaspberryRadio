@@ -286,25 +286,25 @@
                 <div class="menue">
                     <div class="row">
                         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center align-baseline">
-                            <a href="#home" onclick="window.location.replace('/')">
+                            <a href="#home" onclick="mainMenueShow('areaHome')">
                                 <span class="fa fa-home menue-top" id="homeNav"></span>
                             </a>
                             <hr id="homeLine" class="menueLine" />
                         </div>
                         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center">
-                            <a href="#radio" onclick="window.location.reload()">
+                            <a href="#radio" onclick="mainMenueShow('areaRadio')">
                                 <span class="fa fa-broadcast-tower menue-top" id="radioNav"></span>
                             </a>
                             <hr id="radioLine" class="menueLine" />
                         </div>
                         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center">
-                            <a href="#music" onclick="window.location.reload()">
+                            <a href="#music" onclick="wmainMenueShow('areaMusic')">
                                 <span class="fa fa-music menue-top" id="musicNav"></span>
                             </a>
                             <hr id="musicLine" class="menueLine" />
                         </div>
                         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center">
-                            <a href="#conf" onclick="window.location.reload()">
+                            <a href="#conf" onclick="mainMenueShow('areaConf')">
                                 <span class="fa fa-cog menue-top" id="confNav"></span>
                             </a>
                             <hr id="confLine" class="menueLine" />
@@ -356,7 +356,6 @@
         <script src="~/lib/popper/popper.min.js"></script>
         <script src="~/lib/popper/tooltip.min.js"></script>
         <script src="~/lib/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <script src="~/js/jquery.loading.block.js"></script>
         <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 
         <!--[if lt IE 9]>
@@ -370,7 +369,6 @@
         <script src="~/lib/popper/popper.min.js"></script>
         <script src="~/lib/popper/tooltip.min.js"></script>
         <script src="~/lib/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <script src="~/js/jquery.loading.block.js"></script>
         <script src="~/lib/signalr/dist/browser/signalr.js"></script>
         <!--[if lt IE 9]>
             <script type="text/javascript" src="~/js/excanvas.js"></script>
@@ -382,8 +380,6 @@
 
     <script src="~/js/map/leaflet.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/site/dailyScripture.js" asp-append-version="true"></script>
-    <script src="~/js/site/weather.js" asp-append-version="true"></script>
     <script src="~/js/site/radio.js" asp-append-version="true"></script>
     <script src="~/js/site/index.js" asp-append-version="true"></script>
     <script src="~/js/site/config.js" asp-append-version="true"></script>

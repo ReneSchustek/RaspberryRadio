@@ -223,7 +223,9 @@ function refreshRadioListBySearch(page) {
                 document.getElementById('radioStationTable').innerHTML = inner;
             }
 
-            document.getElementById('pageDisplay').innerText = 'Seite ' + page;
+            var displayPage = parseInt(page) + 1;
+
+            document.getElementById('pageDisplay').innerHtml = 'Seite ' + displayPage;
         }
         catch (e) {
             console.log(e);
@@ -231,11 +233,75 @@ function refreshRadioListBySearch(page) {
     }
 }
 
-
 /**
  * Favoriten hinzufügen
  * @param {any} pos Position
  */
 function addRadioFav(pos) {
+    document.getElementById('saveposition').innerHTML = pos;
     $('#configModalRadioSearch').modal('show');
+}
+
+/**
+ * Speichert einen Sender
+ * @param {any} id Sender Id
+ */
+function addRadioStation(id) {
+    //FavPos auslesen
+    var favpos = document.getElementById('saveposition').innerHTML;
+
+    //Station holen
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('GET', '/api/radio/station/' + id, false);
+    xhttp.send();
+    var result = xhttp.response;
+
+    if(result !== '' && result !== undefined && result !== null) {
+        try {
+            var jsonStations = JSON.parse(result);
+
+            var url, i;
+            for (i = 0; i < jsonStations.streams.length; i++) {
+                var type = jsonStations.streams[i].type;
+                
+                if (type !== "audio/mpeg") { continue; }
+
+                url = jsonStations.streams[i].stream;                
+            }
+
+            var imgurl;
+            for (i = 0; i < jsonStations.image.length; i++) {
+                var imageurl = jsonStations.image[i].image[0].url;
+                if (imageurl === '' || imageurl === null || imageurl === undefined) { continue; }
+                imgurl = imageurl;
+            }
+
+            //Url für das speichern erstellen
+            xhttp.open('GET', 'api/radio/save/' + favpos + '/' + jsonStations.name + '/' + url + '/' + imgurl, false);
+            xhttp.send();
+
+            var saveresult = xhttp.response;
+
+            //Modal anzeigen
+            if (saveresult === 'true') {
+                $('#configModalRadioSearch').modal('hide');
+
+                document.getElementById('messageTitle').innerHTML = 'Gespeichert';
+                document.getElementById('messageBody').innerHTML = '<span>' + jsonStations.name + ' wurde auf Position ' + favpos + ' gespeichert.</span >';
+
+                $('#message').modal('show');
+
+            } else {
+                $('#configModalRadioSearch').modal('hide');
+
+                document.getElementById('messageTitle').innerHTML = 'Fehler';
+                document.getElementById('messageBody').innerHTML = '<span>' + jsonStations.name + ' konnte nicht auf Position ' + favpos + ' gespeichert werden.</span >';
+
+                $('#message').modal('show');
+            }
+        }
+        catch (e) {
+            console.log(e);
+        }
+    }
 }
