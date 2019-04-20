@@ -161,13 +161,23 @@ function mainMenueHide() {
  */
 function mainMenueShow(name) {
     mainMenueHide();
-    document.getElementById(name).style.display = 'block';
 
     name = name.toLowerCase();
 
-    if (name.includes('conf')) { document.getElementById('confLine').style.display = 'block'; }
-    else if (name.includes('radio')) { document.getElementById('radioLine').style.display = 'block'; }
-    else { document.getElementById('homeLine').style.display = 'block'; }
+    if (name.includes('conf')) {        
+        document.getElementById('areaConf').style.display = 'block';
+        document.getElementById('confLine').style.display = 'block';
+        document.getElementById('confAreaDailyScripture').style.display = 'block';
+        document.getElementById('dailyLine').style.display = 'block';
+    }
+    else if (name.includes('radio')) {
+        document.getElementById('areaRadio').style.display = 'block';
+        document.getElementById('radioLine').style.display = 'block';
+    }
+    else {
+        document.getElementById('areaHome').style.display = 'block';
+        document.getElementById('homeLine').style.display = 'block';
+    }
 }
 
 /**

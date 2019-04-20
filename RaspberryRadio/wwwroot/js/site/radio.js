@@ -71,47 +71,77 @@ function refreshRadioList(page) {
  * @param {any} shortCountry Länderkürzel
  * @param {any} page Seite der Ergebnisse
  */
-function loadCountryRadioStations(shortCountry, page) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open('GET', '/api/radio/countrysearch/' + shortCountry + '/' + page, false);
+function loadCountryRadioStations(shortCountry, page) {    
+    $.ajax({
+        url: '/api/radio/countrysearch/' + shortCountry + '/' + page,
+        type: "GET",
+        async: false,
+        success: function (data) {           
+            showStationTable(data, page);
+        }
+    });
+}
 
-    xhttp.send();
+/**
+ * Sucht nach einem Sender
+ * @param {any} page Seite
+ */
+function refreshRadioListBySearch(page) {
 
-    var result = xhttp.response;
+    if (document.getElementById('radioCountry').value === ''
+        || document.getElementById('radioCountry').value === null
+        || document.getElementById('radioCountry').value === undefined) {
 
+        showModalMessage("Fehler", "Bitte ein Land auswählen");
+    }
 
+    var shortCountry = findShortCountry(document.getElementById('radioCountry').value);
+    var searchString = document.getElementById('radioSearch').value;
+
+    $.ajax({
+        url: '/api/radio/search/' + searchString + '/' + shortCountry + '/' + page,
+        type: "GET",
+        async: false,
+        success: function (data) {
+            showStationTable(data, page);
+        }
+    });
+}
+
+/**
+ * Aktualisiert die Senderliste bei der Ländersuche
+ * @param {any} data empfangene Daten
+ * @param {any} page Seite
+ */
+function showStationTable(data, page) {
     var tablebody = document.getElementById('radioStationTable');
 
     //Alte Daten löschen
     while (tablebody.firstChild) { tablebody.removeChild(tablebody.firstChild); }
 
     //Neue Daten hinzufügen
-    if (result !== '' && result !== undefined && result !== null) {
-        try {
-            var jsonStations = JSON.parse(result);
+    if (data !== '' && data !== undefined && data !== null) {
+           
+        for (var x = 0; x < data.length; x++) {
 
-            for (var i = 0; i < jsonStations.length; i++) {
+            var inner = document.getElementById('radioStationTable').innerHTML;
 
-                var inner = document.getElementById('radioStationTable').innerHTML;
-
-                if (jsonStations[i].image.url !== null && jsonStations[i].image.url !== undefined && jsonStations[i].image.url !== '') {
-                    inner = inner + '<tr><td><img src="' + jsonStations[i].image.url + '" style="height: 25px"/></td>';
-                }
-                else {
-                    inner = inner + '<tr><td></td>';
-                }
-                inner = inner + '<td>' + jsonStations[i].name + '</td>' +
-                    '<td><span class="fa fa-plus-circle span-clickable" onclick="addRadioStation(' + jsonStations[i].id +')"></span></td></tr>';
-
-                document.getElementById('radioStationTable').innerHTML = inner;
+            if (data[x].image.url !== null && data[x].image.url !== undefined && data[x].image.url !== '') {
+                inner = inner + '<tr><td><span class="span-clickable" onclick="addRadioStation(' + data[x].id + ')"><img src="' + data[x].image.url + '" style="height: 25px"/></span></td>';
             }
+            else {
+                inner = inner + '<tr><td></td>';
+            }
+            inner = inner + '<td><span class="span-clickable" onclick="addRadioStation(' + data[x].id + ')">' + data[x].name + '</span></td>' +
+                '<td><span class="fa fa-plus-circle span-clickable" onclick="addRadioStation(' + data[x].id + ')"></span></td></tr>';
 
-            document.getElementById('pageDisplay').innerText = 'Seite ' + page + 1;
+            document.getElementById('radioStationTable').innerHTML = inner;
         }
-        catch (e) {
-            console.log(e);
-        }
+
+        document.getElementById('pageDisplay').innerText = 'Seite ' + page + 1;
     }
+
+    return;
 }
 
 /**
@@ -177,63 +207,6 @@ function findShortCountry(country) {
 }
 
 /**
- * Sucht nach einem Sender
- * @param {any} page Seite
- */
-function refreshRadioListBySearch(page) {
-   
-    if (document.getElementById('radioCountry').value === ''
-        || document.getElementById('radioCountry').value === null
-        || document.getElementById('radioCountry').value === undefined) {
-
-        showModalMessage("Fehler", "Bitte ein Land auswählen");
-    }
-    
-    var xhttp = new XMLHttpRequest();
-    
-    xhttp.open('GET', '/api/radio/search/' + document.getElementById('radioSearch').value + '/' + findShortCountry(document.getElementById('radioCountry').value) + '/' + page, false);
-
-    xhttp.send();
-
-    var result = xhttp.response;
-
-    var tablebody = document.getElementById('radioStationTable');
-
-    //Alte Daten löschen
-    while (tablebody.firstChild) { tablebody.removeChild(tablebody.firstChild); }
-
-    //Neue Daten hinzufügen
-    if (result !== '' && result !== undefined && result !== null) {
-        try {
-            var jsonStations = JSON.parse(result);
-
-            for (var i = 0; i < jsonStations.length; i++) {
-
-                var inner = document.getElementById('radioStationTable').innerHTML;
-
-                if (jsonStations[i].image.url !== null && jsonStations[i].image.url !== undefined && jsonStations[i].image.url !== '') {
-                    inner = inner + '<tr><td><img src="' + jsonStations[i].image.url + '" style="height: 25px"/></td>';
-                }
-                else {
-                    inner = inner + '<tr><td></td>';
-                }
-                inner = inner + '<td>' + jsonStations[i].name + '</td>' +
-                    '<td><span class="fa fa-plus-circle span-clickable" onclick="addRadioStation(' + jsonStations[i].id + ')"></span></td></tr>';
-
-                document.getElementById('radioStationTable').innerHTML = inner;
-            }
-
-            var displayPage = parseInt(page) + 1;
-
-            document.getElementById('pageDisplay').innerHtml = 'Seite ' + displayPage;
-        }
-        catch (e) {
-            console.log(e);
-        }
-    }
-}
-
-/**
  * Favoriten hinzufügen
  * @param {any} pos Position
  */
@@ -245,63 +218,45 @@ function addRadioFav(pos) {
 /**
  * Speichert einen Sender
  * @param {any} id Sender Id
+ * @param {any} pos Favoriten-Position
  */
 function addRadioStation(id) {
     //FavPos auslesen
     var favpos = document.getElementById('saveposition').innerHTML;
 
-    //Station holen
-    var xhttp = new XMLHttpRequest();
-    xhttp.open('GET', '/api/radio/station/' + id, false);
-    xhttp.send();
-    var result = xhttp.response;
-
-    if(result !== '' && result !== undefined && result !== null) {
-        try {
-            var jsonStations = JSON.parse(result);
-
-            var url, i;
-            for (i = 0; i < jsonStations.streams.length; i++) {
-                var type = jsonStations.streams[i].type;
-                
-                if (type !== "audio/mpeg") { continue; }
-
-                url = jsonStations.streams[i].stream;                
-            }
-
-            var imgurl;
-            for (i = 0; i < jsonStations.image.length; i++) {
-                var imageurl = jsonStations.image[i].image[0].url;
-                if (imageurl === '' || imageurl === null || imageurl === undefined) { continue; }
-                imgurl = imageurl;
-            }
-
-            //Url für das speichern erstellen
-            xhttp.open('GET', 'api/radio/save/' + favpos + '/' + jsonStations.name + '/' + url + '/' + imgurl, false);
-            xhttp.send();
-
-            var saveresult = xhttp.response;
-
-            //Modal anzeigen
-            if (saveresult === 'true') {
-                $('#configModalRadioSearch').modal('hide');
-
-                document.getElementById('messageTitle').innerHTML = 'Gespeichert';
-                document.getElementById('messageBody').innerHTML = '<span>' + jsonStations.name + ' wurde auf Position ' + favpos + ' gespeichert.</span >';
-
-                $('#message').modal('show');
-
-            } else {
-                $('#configModalRadioSearch').modal('hide');
-
-                document.getElementById('messageTitle').innerHTML = 'Fehler';
-                document.getElementById('messageBody').innerHTML = '<span>' + jsonStations.name + ' konnte nicht auf Position ' + favpos + ' gespeichert werden.</span >';
-
-                $('#message').modal('show');
-            }
+    $.ajax({
+        url: '/api/radio/station/' + id + '/' + favpos,
+        type: "GET",
+        async: false,
+        success: function (data) {
+            saveFavPos(data, favpos);
         }
-        catch (e) {
-            console.log(e);
-        }
+    });
+}
+
+function showError() {
+    document.getElementById('responseModalAnswerLabel').innerHTML = 'Fehler';
+    document.getElementById('').innerHTML = 'Der Sender konnte nicht gespeichert werden.';
+    $('#responseModalAnswer').modal('show');
+}
+
+/**
+ * Gibt die Rückmeldung vom Speichern aus
+ * @param {any} data Rückmeldung
+ */
+function saveSuccess(data) {
+    $('#waitingModal').modal('hide');
+
+    //Modal Rückmeldung ausgeben
+    if (data === 'true') {        
+        document.getElementById('messageTitle').innerHTML = 'Gespeichert';
+        document.getElementById('messageBody').innerHTML = '<span>' + jsonStations.name + ' wurde auf Position ' + favpos + ' gespeichert .</span >';
+
+        $('#message').modal('show');
+    } else {
+        document.getElementById('messageTitle').innerHTML = 'Fehler';
+        document.getElementById('messageBody').innerHTML = '<span>' + jsonStations.name + ' konnte nicht auf Position ' + favpos + ' gespeichert werden.</span >';
+
+        $('#message').modal('show');
     }
 }

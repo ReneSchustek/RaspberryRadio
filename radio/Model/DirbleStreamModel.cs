@@ -6,7 +6,7 @@ namespace radio.Model
     public class DirbleStreamModel
     {
         [JsonProperty("stream")]
-        public Uri StreamStream { get; set; }
+        public Uri Stream { get; set; }
 
         [JsonProperty("bitrate")]
         public long? Bitrate { get; set; }

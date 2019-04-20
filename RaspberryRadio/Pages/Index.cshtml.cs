@@ -34,6 +34,47 @@ namespace RaspberryRadio.Pages
         [BindProperty]
         public string CalendarEventContent { get; set; }
 
+        [BindProperty]
+        public string RadioTopFav1Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav2Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav3Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav4Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav5Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav6Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav7Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav8Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav9Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav10Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav11Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav12Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav13Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav14Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav15Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav16Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav17Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav18Name { get; set; }
+        [BindProperty]        
+        public string RadioTopFav19Name { get; set; }
+        [BindProperty]
+        public string RadioTopFav20Name { get; set; }
+
         #endregion
 
         #region Models
@@ -76,47 +117,6 @@ namespace RaspberryRadio.Pages
 
         [BindProperty]
         public string RadioCountry { get; set; }
-
-        [BindProperty]
-        public RadioFavModel RadioTopFav1 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav2 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav3 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav4 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav5 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav6 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav7 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav8 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav9 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav10 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav11 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav12 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav13 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav14 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav15 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav16 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav17 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav18 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav19 { get; set; }
-        [BindProperty]
-        public RadioFavModel RadioTopFav20 { get; set; }
 
         //Global
         private readonly IHubContext<SendOpenWeatherConf> _hubContext;
@@ -480,58 +480,89 @@ namespace RaspberryRadio.Pages
                 return RedirectToPage(new { response = "save", state = "err", message = "Kalender", area = "calendar" });
             }
         }
+                        
 
+        /// <summary>
+        /// Radio-Favoriten auf der ersten Seite erstellen (6 Stück)
+        /// </summary>
+        /// <returns></returns>
         private async Task CreateTopRadioFavs()
         {
             IList<RadioFavModel> radioTopFavs = await _radioService.ReadFirst(6);
 
             if (radioTopFavs.Count < 6)
             {
-                RadioTopFav6.Name = "";
+                RadioTopFav6Name = "";
             }
             else
             {
-
+                RadioTopFav1Name = radioTopFavs[0].Name;
+                RadioTopFav2Name = radioTopFavs[1].Name;
+                RadioTopFav3Name = radioTopFavs[2].Name;
+                RadioTopFav4Name = radioTopFavs[3].Name;
+                RadioTopFav5Name = radioTopFavs[4].Name;
             }
 
             if (radioTopFavs.Count < 5)
             {
+                RadioTopFav6Name = "";
+                RadioTopFav5Name = "";
             }
             else
             {
-
+                RadioTopFav1Name = radioTopFavs[0].Name;
+                RadioTopFav2Name = radioTopFavs[1].Name;
+                RadioTopFav3Name = radioTopFavs[2].Name;
+                RadioTopFav4Name = radioTopFavs[3].Name;
             }
 
             if (radioTopFavs.Count < 4)
             {
+                RadioTopFav6Name = "";
+                RadioTopFav5Name = "";
+                RadioTopFav4Name = "";
             }
             else
             {
-
+                RadioTopFav1Name = radioTopFavs[0].Name;
+                RadioTopFav2Name = radioTopFavs[1].Name;
+                RadioTopFav3Name = radioTopFavs[2].Name;
             }
 
             if (radioTopFavs.Count < 3)
-            {                
+            {
+                RadioTopFav6Name = "";
+                RadioTopFav5Name = "";
+                RadioTopFav4Name = "";
+                RadioTopFav3Name = "";
             }
             else
             {
-
+                RadioTopFav1Name = radioTopFavs[0].Name;
+                RadioTopFav2Name = radioTopFavs[1].Name;
             }
 
             if (radioTopFavs.Count < 2)
             {
+                RadioTopFav6Name = "";
+                RadioTopFav5Name = "";
+                RadioTopFav4Name = "";
+                RadioTopFav3Name = "";
+                RadioTopFav2Name = "";
             }
             else
             {
-
+                RadioTopFav1Name = radioTopFavs[0].Name;
             }
 
             if (radioTopFavs.Count < 1)
-            {                
-            }
-            else
             {
-
+                RadioTopFav6Name = "";
+                RadioTopFav5Name = "";
+                RadioTopFav4Name = "";
+                RadioTopFav3Name = "";
+                RadioTopFav2Name = "";
+                RadioTopFav1Name = "";
             }
         }
     }

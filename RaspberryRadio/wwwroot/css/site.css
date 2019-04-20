@@ -25,8 +25,8 @@ a {
 }
 
 .background-dark {
-    background: #0f3854;
-    background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 100%);
+    background: rgb(10,46,56);
+    background: radial-gradient(circle, rgba(10,46,56,1) 0%, rgba(0,0,0,1) 100%);
     background-size: 100%;
     color: white;
 }
